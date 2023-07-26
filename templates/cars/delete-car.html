@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+        <section id="edit">
+
+            <div class="form">
+                <h1>Are you sure you want to delete this car?</h1>
+
+                <!-- Delete Car Form -->
+                <form method="post" action="{% url 'car delete' pk=carsmodel.pk%}">
+
+                    {{ form }}
+                    {% csrf_token %}
+                    <!-- Confirm Button -->
+                    <button type="submit">Yes</button>
+
+                </form>
+                <!-- End Delete Car Form -->
+            </div>
+
+        </section>
+
+{% endblock %}

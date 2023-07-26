@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+        <section id="create">
+            <div class="form">
+
+                <h2>Add Car</h2>
+                <form method="post" action="{% url 'create car' %}">
+                    {{ form }}
+                    <button type="submit">Add Car</button>
+
+                    {% csrf_token %}
+                </form>
+            </div>
+        </section>
+{% endblock %}

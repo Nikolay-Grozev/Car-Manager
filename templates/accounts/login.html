@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <!-- Login Profile Form -->
+    <section id="login">
+        <div class="form">
+            <h2>LogIn</h2>
+            <form method="post" action="{% url 'login' %}">
+
+                {% csrf_token %}
+                {{ form }}
+                <button type="submit">LogIn</button>
+            </form>
+
+        </div>
+    </section>
+
+{% endblock %}

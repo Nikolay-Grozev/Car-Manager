@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    {% if reminders %}
+        <!-- Reminders Dashboard Page -->
+        <h2>Car Reminders:</h2>
+        {#        TODO check id name#}
+        <section id="dashboard">
+            {% for reminder in reminders %}
+                <div class="reminders">
+                    <!-- reminder name -->
+                    <h3 class="title">{{ reminder.reminder_name }}</h3>
+                    <!-- insurance -->
+                    <p class="description">{{ reminder.start_date }}</p>
+                    <p class="description">{{ reminder.end_date }}</p>
+                </div>
+            {% endfor %}
+{#            <a href="{% url 'reminders edit ' pk=reminder.pk %}">#}
+{#                <button type="submit">Edit</button>#}
+{#            </a>#}
+{#            <a href="{% url 'reminders delete' %}">#}
+{#                <button type="submit">Delete</button>#}
+{#            </a>#}
+        </section>
+
+    {% else %}
+        <h2>You don't have any reminders for this car.</h2>
+
+    {% endif %}
+    <section id="create">
+        <div class="form">
+            <form method="post" action="{% url 'create reminders' pk=car%}">
+                {{ form }}
+                <p>
+                    <button type="submit">Add Reminders</button>
+                </p>
+                {% csrf_token %}
+
+            </form>
+        </div>
+    </section>
+
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <!-- Profile Details Section -->
+
+    <section id="details">
+        <div id="details-wrapper">
+            <h2>Car Details</h2>
+
+
+            <p id="details-title">{{ cars.car_name }}</p>
+
+
+            <div id="info-wrapper">
+                <div id="details-description">
+                    <p>
+                        {{ cars.plate_number }}
+
+                    </p>
+                    <p>
+                        {{ cars.vin_number }}
+                    </p>
+                    {% csrf_token %}
+
+                </div>
+
+                <!--Edit and Delete buttons -->
+                <div id="action-buttons">
+                    <a href="{% url 'car edit' pk=cars.pk %}" id="edit-btn">Edit</a>
+                    <a href="{% url 'car delete' pk=cars.pk %}" id="delete-btn">Delete</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

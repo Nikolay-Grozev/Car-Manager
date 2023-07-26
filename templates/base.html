@@ -1,0 +1,70 @@
+{% load static %}
+{% load is_user %}
+{% is_user as is_user  %}
+
+
+{#TODO remove logo from email field#}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=\, initial-scale=1.0"/>
+    {#    TODO: Check again#}
+    {#    <link rel="stylesheet" href="{% static '/styles/styles.css' %}"/>#}
+    <title>Car Manager</title>
+</head>
+
+<body>
+<div id="wrapper">
+    <header>
+        <!-- Navigation -->
+        {#        <a id="logo" href="#">#}
+        {#            <img id="logo-img" src="{% static '/images/home.jpg' %}" alt="logo"/>#}
+        {#        </a>#}
+
+        <nav>
+
+            {% if is_user %}
+                <!-- If there is a user profile -->
+                <div class="user">
+                    <a href="{% url 'home page' %}">Home page</a>
+                    <a href="{% url 'profile details' pk=user.pk %}">Profile</a>
+                    <a href="{% url 'create car' %}">Add Car</a>
+                    <a href="{% url 'dashboard' %}">My Cars</a>
+                    <a href="#">Contact</a>
+                    <a href="#">About Us</a>
+                    <a href="{% url 'logout' %}">LogOut</a>
+
+
+
+                </div>
+            {% else %}
+
+                <!-- If user profile has NOT been created -->
+                <div class="guest">
+                    <a href="{% url 'home page' %}">Home page</a>
+                    <a href="{% url 'create profile' %}">Create Profile</a>
+                    <a href="{% url 'login' %}">LogIn</a>
+                    <a href="#">Contact</a>
+                    <a href="#">About Us</a>
+
+
+                </div>
+            {% endif %}
+        </nav>
+    </header>
+    {% block content %}
+    {% endblock %}
+    <!-- footer -->
+
+</div>
+<!-- Your existing HTML content -->
+
+<footer>
+    <p>&copy;Nikolay Grozev- CarManager &#8482;</p>
+</footer>
+
+
+</body>
+</html>

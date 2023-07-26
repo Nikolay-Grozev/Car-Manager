@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+        <section id="register">
+            <div class="form">
+                <h2>Edit Plate Number</h2>
+                <form method="post" action="{% url 'car edit' pk=carsmodel.pk%}">
+                    {{ form }}
+                    {% csrf_token %}
+
+                    <button type="submit">Edit</button>
+
+                </form>
+            </div>
+        </section>
+
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+        <section id="create">
+            <div class="form">
+
+                <h2>Add Reminders</h2>
+                <form method="post" action="{% url 'create reminders' pk=car_id %}">
+                    {{ form }}
+                    <button type="submit">Add Reminders</button>
+
+                    {% csrf_token %}
+                </form>
+            </div>
+        </section>
+{% endblock %}

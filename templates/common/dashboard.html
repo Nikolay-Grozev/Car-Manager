@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    {% if cars %}
+        <!-- Dashboard Page -->
+        <h2>All Cars:</h2>
+        <section id="dashboard">
+            {% for car in cars %}
+                <div class="cars">
+                    <!-- car name -->
+                    <h3 class="title">{{ car.car_name }}</h3>
+                    <!-- car plate number -->
+                    <p class="description">{{ car.plate_number }}</p>
+
+                    <a href="{% url 'car details' pk=car.pk %}">
+                        <button type="submit">Details</button>
+                    </a>
+                    <a href="{% url 'reminders dashboard' pk=car.pk %}">
+                        <button type="submit">My Reminders</button>
+                    </a>
+                </div>
+            {% endfor %}
+
+        </section>
+
+    {% else %}
+        <h2>No cars into your dashboard.</h2>
+
+    {% endif %}
+    <section id="create">
+        <div class="form">
+            <form method="post" action="{% url 'create car' %}">
+                {{ form }}
+                <p>
+                    <button type="submit">Add New Car</button>
+                </p>
+                {% csrf_token %}
+
+            </form>
+        </div>
+    </section>
+
+
+{% endblock %}
