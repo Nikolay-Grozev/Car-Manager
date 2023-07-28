@@ -16,12 +16,12 @@
                     <p class="description">{{ reminder.end_date }}</p>
                 </div>
             {% endfor %}
-{#            <a href="{% url 'reminders edit ' pk=reminder.pk %}">#}
-{#                <button type="submit">Edit</button>#}
-{#            </a>#}
-{#            <a href="{% url 'reminders delete' %}">#}
-{#                <button type="submit">Delete</button>#}
-{#            </a>#}
+            {#            <a href="{% url 'reminders edit ' pk=reminder.pk %}">#}
+            {#                <button type="submit">Edit</button>#}
+            {#            </a>#}
+            {#            <a href="{% url 'reminders delete' %}">#}
+            {#                <button type="submit">Delete</button>#}
+            {#            </a>#}
         </section>
 
     {% else %}
@@ -30,16 +30,17 @@
     {% endif %}
     <section id="create">
         <div class="form">
-            <form method="post" action="{% url 'create reminders' pk=car%}">
-                {{ form }}
-                <p>
-                    <button type="submit">Add Reminders</button>
-                </p>
-                {% csrf_token %}
-
-            </form>
+            <button type="button" id="add-reminder-btn">Add Reminders</button>
+            {% csrf_token %}
         </div>
     </section>
+
+    <script>
+        document.getElementById('add-reminder-btn').addEventListener('click', function () {
+            window.location.href = '{% url 'create reminders' pk=car_id %}';
+        });
+    </script>
+
 
 
 {% endblock %}

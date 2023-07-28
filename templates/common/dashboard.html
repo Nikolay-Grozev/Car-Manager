@@ -29,17 +29,19 @@
 
     {% endif %}
     <section id="create">
-        <div class="form">
-            <form method="post" action="{% url 'create car' %}">
-                {{ form }}
-                <p>
-                    <button type="submit">Add New Car</button>
-                </p>
-                {% csrf_token %}
-
-            </form>
+        <div>
+            <button type="button" id="add-car-btn">Add New Car</button>
         </div>
+
+
+        {% csrf_token %}
     </section>
+    <script>
+        document.getElementById('add-car-btn').addEventListener('click', function () {
+            window.location.href = '{% url 'create car'%}';
+        });
+    </script>
+
 
 
 {% endblock %}

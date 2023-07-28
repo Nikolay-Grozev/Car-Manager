@@ -1,3 +1,4 @@
+from django.core.exceptions import ValidationError
 from django.db import models
 import datetime
 from car_manager.cars.models.car_profile import CarsModel
@@ -40,6 +41,7 @@ class ReminderModel(models.Model):
         validators=(
             MinDateValidator(MIN_DATE),
             MaxDateValidator(MAX_DATE),
+
         ),
     )
 

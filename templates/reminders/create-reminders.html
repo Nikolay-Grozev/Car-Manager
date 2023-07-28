@@ -4,9 +4,9 @@
             <div class="form">
 
                 <h2>Add Reminders</h2>
-                <form method="post" action="{% url 'create reminders' pk=car_id %}">
+                <form method="post">
                     {{ form }}
-                    <button type="submit">Add Reminders</button>
+                    <button type="submit">SAVE</button>
 
                     {% csrf_token %}
                 </form>
