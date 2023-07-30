@@ -1,7 +1,6 @@
 {% load static %}
 {% load is_user %}
-{% is_user as is_user  %}
-
+{% is_user as is_user %}
 
 {#TODO remove logo from email field#}
 <!DOCTYPE html>
@@ -18,11 +17,6 @@
 <body>
 <div id="wrapper">
     <header>
-        <!-- Navigation -->
-        {#        <a id="logo" href="#">#}
-        {#            <img id="logo-img" src="{% static '/images/home.jpg' %}" alt="logo"/>#}
-        {#        </a>#}
-
         <nav>
 
             {% if is_user %}

@@ -16,9 +16,10 @@ UserModel = get_user_model()
 class CarsModel(models.Model):
     MIN_LEN_NUMBER_OF_VEHICLE = 7
     MAX_LEN_PLATE_NUMBER_OF_VEHICLE = 8
-    LEN_OF_VIN_NUMBER = 17
+    MAX_LEN_OF_VIN_NUMBER = 17
 
     OPEL = 'Opel'
+
     CITROEN = 'Citroen'
     BMW = 'BMW'
 
@@ -48,7 +49,7 @@ class CarsModel(models.Model):
     )
 
     vin_number = models.CharField(
-        max_length=LEN_OF_VIN_NUMBER,
+        max_length=MAX_LEN_OF_VIN_NUMBER,
         unique=True,
         null=False,
         blank=False,

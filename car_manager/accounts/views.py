@@ -1,5 +1,6 @@
 from django.contrib.auth import views as auth_views, login, logout
 from django.contrib.auth import mixins as auth_mixins
+from django.http import HttpResponseForbidden
 from django.urls import reverse_lazy
 
 from django.views import generic as views
@@ -41,6 +42,15 @@ class UserDetailsView(auth_mixins.LoginRequiredMixin, views.DetailView):
     context_object_name = 'profile'
     
     # TODO check is owner
+    def dispatch(self, request, *args, **kwargs):
+        handler = super(UserDetailsView, self).dispatch(request, *args, **kwargs)
+        try:
+            owner_user = self.object.user
+        except AttributeError:
+            return HttpResponseForbidden("403 Forbidden")
+        if owner_user != request.user:
+            return HttpResponseForbidden("403 Forbidden")
+        return handler
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -55,12 +65,32 @@ class UserEditView(views.UpdateView):
     context_object_name = 'profile'
     success_url = reverse_lazy('home page')
 
+    def dispatch(self, request, *args, **kwargs):
+        handler = super(UserEditView, self).dispatch(request, *args, **kwargs)
+        try:
+            owner_user = self.object.user
+        except AttributeError:
+            return HttpResponseForbidden("403 Forbidden")
+        if owner_user != request.user:
+            return HttpResponseForbidden("403 Forbidden")
+        return handler
+
 
 class UserDeleteView(views.DeleteView):
     model = ProfileDetails
     form_class = DeleteProfileForm
     template_name = 'accounts/delete-profile.html'
     success_url = reverse_lazy('home page')
+
+    def dispatch(self, request, *args, **kwargs):
+        handler = super(UserDeleteView, self).dispatch(request, *args, **kwargs)
+        try:
+            owner_user = self.object.user
+        except AttributeError:
+            return HttpResponseForbidden("403 Forbidden")
+        if owner_user != request.user:
+            return HttpResponseForbidden("403 Forbidden")
+        return handler
 
     def form_valid(self, form_class):
         user = CarManagerUser.objects.get(id=self.object.user_id)
@@ -70,7 +100,7 @@ class UserDeleteView(views.DeleteView):
         return result
 
 
-class UserChangePassword(auth_views.PasswordChangeView):
+class ChangePasswordView(auth_mixins.LoginRequiredMixin, auth_views.PasswordChangeView):
     form_class = ChangePasswordForm
     template_name = 'accounts/change-password.html'
-    success_url = reverse_lazy('show home')
+    success_url = reverse_lazy('home page')

@@ -35,12 +35,14 @@
                     {% csrf_token %}
 
                 </div>
-
+            {% if is_owner %}
                 <!--Edit and Delete buttons -->
                 <div id="action-buttons">
-                    <a href="{% url 'edit profile' pk=profile.user.pk %}" id="edit-btn">Edit</a>
-                    <a href="{% url 'delete profile' pk=profile.user.pk %}" id="delete-btn">Delete</a>
+                    <a href="{% url 'edit profile' pk=profile.user.pk %}" id="edit-btn">Edit Profile</a>
+                    <a href="{% url 'delete profile' pk=profile.user.pk %}" id="delete-btn">Delete Profile</a>
+                    <a href="{% url 'change pass' %}">Change pass</a>
                 </div>
+            {% endif %}
             </div>
         </div>
     </section>

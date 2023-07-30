@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+        <section id="edit">
+
+            <div class="form">
+                <h1>Are you sure you want to delete this reminder?</h1>
+
+                <!-- Delete Reminder Form -->
+                <form method="post" action="{% url 'reminder delete' pk=remindermodel.pk%}">
+
+                    {{ form }}
+                    {% csrf_token %}
+                    <!-- Confirm Button -->
+                    <button type="submit">Yes</button>
+
+                </form>
+                <!-- End Delete Reminder Form -->
+            </div>
+
+        </section>
+
+{% endblock %}

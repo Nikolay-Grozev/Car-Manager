@@ -54,16 +54,6 @@ class UserLoginForm(auth_forms.AuthenticationForm, BootstrapFormControl):
         fields = ('email', 'password',)
 
 
-class ChangePasswordForm(auth_forms.PasswordChangeForm, BootstrapFormControl):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        super().apply_class_form_control(self.fields)
-
-    class Meta:
-        model = UserModel
-        fields = '__all__'
-
-
 class EditProfileForm(forms.ModelForm, BootstrapFormControl):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -85,4 +75,14 @@ class DeleteProfileForm(forms.ModelForm):
 
     class Meta:
         model = ProfileDetails
-        fields = ()
+        fields = "__all__"
+
+
+class ChangePasswordForm(auth_forms.PasswordChangeForm, BootstrapFormControl):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        super().apply_class_form_control(self.fields)
+
+    class Meta:
+        model = UserModel
+        fields = "_"

@@ -15,13 +15,11 @@
                     <p class="description">{{ reminder.start_date }}</p>
                     <p class="description">{{ reminder.end_date }}</p>
                 </div>
+                <a href="{% url 'reminder delete' pk=reminder.pk %}">
+                    <button type="submit">Delete</button>
+                </a>
             {% endfor %}
-            {#            <a href="{% url 'reminders edit ' pk=reminder.pk %}">#}
-            {#                <button type="submit">Edit</button>#}
-            {#            </a>#}
-            {#            <a href="{% url 'reminders delete' %}">#}
-            {#                <button type="submit">Delete</button>#}
-            {#            </a>#}
+
         </section>
 
     {% else %}

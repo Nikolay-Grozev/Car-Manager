@@ -1,7 +1,7 @@
-from django.urls import path, include
+from django.urls import path
 
 from car_manager.accounts.views import UserRegisterView, UserLoginView, UserLogoutView, UserDetailsView, UserEditView, \
-    UserDeleteView, UserChangePassword
+    UserDeleteView, ChangePasswordView
 
 
 urlpatterns = (
@@ -11,6 +11,6 @@ urlpatterns = (
     path('profile_details/<int:pk>/', UserDetailsView.as_view(), name='profile details'),
     path('edit_profile/<int:pk>/', UserEditView.as_view(), name='edit profile'),
     path('delete_profile/<int:pk>/', UserDeleteView.as_view(), name='delete profile'),
-    path('change_pass/', UserChangePassword.as_view(), name='change pass'),
+    path('change_pass/', ChangePasswordView.as_view(), name='change pass'),
 
 )

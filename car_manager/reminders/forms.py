@@ -18,17 +18,13 @@ class RemindersRegistrationForm(forms.ModelForm, BootstrapFormControl):
             reminder.save()
         return reminder
 
-    # def clean_choice_field(self):
-    #     choice_field_value = self.cleaned_data['reminder_name']
-    #
-    #     # Check if the selected option has been used before
-    #     if ReminderModel.objects.filter(reminder_name=choice_field_value).exists():
-    #         raise forms.ValidationError("This option has already been selected.")
-    #
-    #     return choice_field_value
-
     def clean(self):
         cleaned_data = super().clean()
+
+        # Check if current reminder is already exists in car reminders
+        current_reminder = cleaned_data.get('reminder_name')
+        if self.car.remindermodel_set.filter(reminder_name=current_reminder):
+            raise forms.ValidationError("You already have this reminder for this car.")
 
         # Check if start date is less than end date
         start_date = cleaned_data.get('start_date')
@@ -44,3 +40,17 @@ class RemindersRegistrationForm(forms.ModelForm, BootstrapFormControl):
             'start_date': forms.DateInput(attrs={'placeholder': 'mm/dd/yyyy', 'type': 'date'}),
             'end_date': forms.DateInput(attrs={'placeholder': 'mm/dd/yyyy', 'type': 'date'})
         }
+
+
+class DeleteReminderForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    def save(self, commit=True):
+        super().save(commit=commit)
+        self.instance.delete()
+        return self.instance
+
+    class Meta:
+        model = ReminderModel
+        fields = ()

@@ -1,8 +1,10 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views import generic
+from django.views import generic as views
+from django.contrib.auth import mixins as auth_mixins
 
-from .forms import RemindersRegistrationForm
+from .forms import RemindersRegistrationForm, DeleteReminderForm
 from .models import ReminderModel, CarsModel
 
 
@@ -26,3 +28,10 @@ class RemindersView(generic.ListView):
         context['reminders'] = ReminderModel.objects.filter(car_id=self.kwargs.get('pk'))
         context['car_id'] = self.kwargs.get("pk")
         return context
+
+
+class DeleteReminderView(auth_mixins.LoginRequiredMixin, views.DeleteView):
+    model = ReminderModel
+    form_class = DeleteReminderForm
+    template_name = 'reminders/reminders-delete.html'
+    success_url = reverse_lazy('dashboard')
