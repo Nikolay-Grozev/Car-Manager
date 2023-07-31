@@ -1,4 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponseForbidden
 from django.urls import reverse_lazy
 from django.views import generic
 from django.views import generic as views
@@ -22,6 +23,16 @@ class CreateRemindersView(LoginRequiredMixin, generic.CreateView):
 class RemindersView(generic.ListView):
     model = ReminderModel
     template_name = 'reminders/reminders-dashboard.html'
+
+    # def dispatch(self, request, *args, **kwargs):
+    #     handler = super(RemindersView, self).dispatch(request, *args, **kwargs)
+    #     try:
+    #         owner_user = self.
+    #     except AttributeError:
+    #         return HttpResponseForbidden("403 Forbidden")
+    #     if owner_user != request.user:
+    #         return HttpResponseForbidden("403 Forbidden")
+    #     return handler
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

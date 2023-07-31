@@ -10,7 +10,6 @@
                 <!-- Delete Profile Form -->
                 <form method="post" action="{% url 'delete profile' pk=object.pk%}">
 
-                    {{ form }}
                     {% csrf_token %}
                     <!-- Confirm Button -->
                     <button type="submit">Yes</button>

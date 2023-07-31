@@ -75,7 +75,7 @@ class DeleteProfileForm(forms.ModelForm):
 
     class Meta:
         model = ProfileDetails
-        fields = "__all__"
+        fields = ()
 
 
 class ChangePasswordForm(auth_forms.PasswordChangeForm, BootstrapFormControl):
@@ -85,4 +85,4 @@ class ChangePasswordForm(auth_forms.PasswordChangeForm, BootstrapFormControl):
 
     class Meta:
         model = UserModel
-        fields = "_"
+        fields = "__all__"

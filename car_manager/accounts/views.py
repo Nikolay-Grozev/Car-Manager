@@ -40,8 +40,7 @@ class UserDetailsView(auth_mixins.LoginRequiredMixin, views.DetailView):
     model = ProfileDetails
     template_name = 'accounts/details-profile.html'
     context_object_name = 'profile'
-    
-    # TODO check is owner
+
     def dispatch(self, request, *args, **kwargs):
         handler = super(UserDetailsView, self).dispatch(request, *args, **kwargs)
         try:

@@ -62,5 +62,10 @@ class CarsModel(models.Model):
         on_delete=models.CASCADE,
     )
 
+    def save(self, *args, **kwargs):
+        self.vin_number = self.vin_number.upper()
+        self.plate_number = self.plate_number.upper()
+        super(CarsModel, self).save(*args, **kwargs)
+
     class Meta:
         verbose_name_plural = 'My Cars'

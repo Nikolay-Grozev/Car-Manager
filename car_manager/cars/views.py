@@ -1,3 +1,4 @@
+from django.http import HttpResponseForbidden
 from django.urls import reverse_lazy
 from django.views import generic as views
 from django.contrib.auth import mixins as auth_mixins
@@ -33,7 +34,15 @@ class DetailsCarView(auth_mixins.LoginRequiredMixin, views.DetailView):
     template_name = 'cars/details-car.html'
     context_object_name = 'cars'
 
-    # TODO check is owner
+    def dispatch(self, request, *args, **kwargs):
+        handler = super(DetailsCarView, self).dispatch(request, *args, **kwargs)
+        try:
+            owner_user = self.object.user
+        except AttributeError:
+            return HttpResponseForbidden("403 Forbidden")
+        if owner_user != request.user:
+            return HttpResponseForbidden("403 Forbidden")
+        return handler
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -47,9 +56,29 @@ class EditCarView(auth_mixins.LoginRequiredMixin, views.UpdateView):
     template_name = 'cars/edit-car.html'
     success_url = reverse_lazy('dashboard')
 
+    def dispatch(self, request, *args, **kwargs):
+        handler = super(EditCarView, self).dispatch(request, *args, **kwargs)
+        try:
+            owner_user = self.object.user
+        except AttributeError:
+            return HttpResponseForbidden("403 Forbidden")
+        if owner_user != request.user:
+            return HttpResponseForbidden("403 Forbidden")
+        return handler
+
 
 class DeleteCarView(auth_mixins.LoginRequiredMixin, views.DeleteView):
     model = CarsModel
     form_class = DeleteCarForm
     template_name = 'cars/delete-car.html'
     success_url = reverse_lazy('dashboard')
+
+    def dispatch(self, request, *args, **kwargs):
+        handler = super(DeleteCarView, self).dispatch(request, *args, **kwargs)
+        try:
+            owner_user = self.object.user
+        except AttributeError:
+            return HttpResponseForbidden("403 Forbidden")
+        if owner_user != request.user:
+            return HttpResponseForbidden("403 Forbidden")
+        return handler
