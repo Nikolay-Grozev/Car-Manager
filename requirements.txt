@@ -1,0 +1,8 @@
+asgiref==3.7.2
+decorator==5.1.1
+Django==4.2.3
+form==0.0.1
+psycopg2-binary==2.9.6
+sqlparse==0.4.4
+typing_extensions==4.7.1
+validators==0.20.0
