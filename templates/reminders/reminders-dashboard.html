@@ -22,23 +22,26 @@
 
         </section>
 
+
     {% else %}
         <h2>You don't have any reminders for this car.</h2>
 
     {% endif %}
-    <section id="create">
-        <div class="form">
-            <button type="button" id="add-reminder-btn">Add Reminders</button>
-            {% csrf_token %}
-        </div>
-    </section>
+    {% if current < 3 %}
+        <section id="create">
+            <div class="form">
+                <button type="button" id="add-reminder-btn">Add Reminders</button>
+                {% csrf_token %}
+            </div>
+        </section>
 
-    <script>
-        document.getElementById('add-reminder-btn').addEventListener('click', function () {
-            window.location.href = '{% url 'create reminders' pk=car_id %}';
-        });
-    </script>
-
-
+        <script>
+            document.getElementById('add-reminder-btn').addEventListener('click', function () {
+                window.location.href = '{% url 'create reminders' pk=car_id %}';
+            });
+        </script>
+    {% else %}
+        <h3>You all ready have every type of reminders for this car</h3>
+    {% endif %}
 
 {% endblock %}

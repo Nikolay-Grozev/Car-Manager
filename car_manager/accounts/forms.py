@@ -77,7 +77,6 @@ class DeleteProfileForm(forms.ModelForm):
         model = ProfileDetails
         fields = ()
 
-
 class ChangePasswordForm(auth_forms.PasswordChangeForm, BootstrapFormControl):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

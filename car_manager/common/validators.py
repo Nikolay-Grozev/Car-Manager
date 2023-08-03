@@ -17,6 +17,11 @@ def validate_date_range(start_date, end_date):
         raise forms.ValidationError("Start date must be less than end date.")
 
 
+def validate_only_letters(value):
+    if not value.isalpha():
+        raise ValidationError("Must contains only letters")
+
+
 @deconstructible
 class MinDateValidator:
     def __init__(self, min_date):

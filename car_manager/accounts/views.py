@@ -1,6 +1,6 @@
 from django.contrib.auth import views as auth_views, login, logout
 from django.contrib.auth import mixins as auth_mixins
-from django.http import HttpResponseForbidden
+from django.http import HttpResponseForbidden, HttpResponseRedirect
 from django.urls import reverse_lazy
 
 from django.views import generic as views
@@ -82,14 +82,13 @@ class UserDeleteView(views.DeleteView):
     success_url = reverse_lazy('home page')
 
     def dispatch(self, request, *args, **kwargs):
-        handler = super(UserDeleteView, self).dispatch(request, *args, **kwargs)
-        try:
-            owner_user = self.object.user
-        except AttributeError:
+        # Get the profile associated with the current user
+        self.object = self.get_object()
+
+        # Check if the current user owns the profile
+        if self.object.user != request.user:
             return HttpResponseForbidden("403 Forbidden")
-        if owner_user != request.user:
-            return HttpResponseForbidden("403 Forbidden")
-        return handler
+        return super().dispatch(request, *args, **kwargs)
 
     def form_valid(self, form_class):
         user = CarManagerUser.objects.get(id=self.object.user_id)

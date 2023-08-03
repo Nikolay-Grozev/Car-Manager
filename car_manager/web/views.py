@@ -1,7 +1,4 @@
 from django.contrib.auth import views
-from django.shortcuts import render
-
-from car_manager.web.models import Dashboard
 
 
 class HomePageView(views.TemplateView):
@@ -12,3 +9,7 @@ class HomePageView(views.TemplateView):
         context['is_user_signed_in'] = self.request.user.is_authenticated
         context['user'] = self.request.user
         return context
+
+
+class AboutUsView(views.TemplateView):
+    template_name = 'common/about-us.html'

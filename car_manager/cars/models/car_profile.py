@@ -19,14 +19,17 @@ class CarsModel(models.Model):
     MAX_LEN_OF_VIN_NUMBER = 17
 
     OPEL = 'Opel'
-
     CITROEN = 'Citroen'
     BMW = 'BMW'
+    MERCEDES = 'Mercedes-Benz'
+    PEUGEOT = 'Peugeot'
 
     CAR = (
         (OPEL, OPEL),
         (CITROEN, CITROEN),
         (BMW, BMW),
+        (MERCEDES, MERCEDES),
+        (PEUGEOT, PEUGEOT),
 
     )
 
@@ -68,4 +71,5 @@ class CarsModel(models.Model):
         super(CarsModel, self).save(*args, **kwargs)
 
     class Meta:
+        ordering = ['car_name', 'plate_number']
         verbose_name_plural = 'My Cars'
