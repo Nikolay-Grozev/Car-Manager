@@ -9,12 +9,6 @@ from car_manager.common.validators import validate_only_letters
 
 # TODO create function with max MB size image_url
 
-# def validate_only_letters(value):
-#     for ch in value:
-#         if not ch.isalpha():
-#             raise exceptions.ValidationError("The name should contain only letters!")
-
-
 class CarManagerUser(auth_model.AbstractBaseUser, auth_model.PermissionsMixin):
     email = models.EmailField(
         unique=True,

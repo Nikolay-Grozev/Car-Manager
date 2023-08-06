@@ -1,6 +1,8 @@
+import os.path
 from pathlib import Path
 
 from django.urls import reverse_lazy
+from celery.schedules import crontab
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -13,7 +15,6 @@ SECRET_KEY = 'django-insecure-nhqfmgawdfe8-&m=70p_@i1#rby((a@b2af23vd_0vz*s)w*$e
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
 ALLOWED_HOSTS = []
 
 # Application definition
@@ -30,6 +31,8 @@ INSTALLED_APPS = [
     'car_manager.web',
     'car_manager.cars',
     'car_manager.reminders',
+    'car_manager.contact',
+
 ]
 
 MIDDLEWARE = [
@@ -125,3 +128,25 @@ AUTH_USER_MODEL = 'accounts.CarManagerUser'
 
 LOGOUT_REDIRECT_URL = reverse_lazy('home page')
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'grozev27@gmail.com'
+EMAIL_HOST_PASSWORD = 'sorn hsdu tqsw suye'
+
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'Europe/London'
+
+CELERY_BEAT_SCHEDULE = {
+    'send_reminder_emails': {
+        'task': 'car_manager.reminders.tasks.send_reminder_emails',
+        'schedule': crontab(hour=10, minute=0),
+        # test reminders sending:
+        # 'schedule': crontab(minute='*/2'),
+    },
+}

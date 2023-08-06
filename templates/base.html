@@ -2,49 +2,90 @@
 {% load is_user %}
 {% is_user as is_user %}
 
-{#TODO remove logo from email field#}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=\, initial-scale=1.0"/>
-    {#    TODO: Check again#}
-    {#    <link rel="stylesheet" href="{% static '/styles/styles.css' %}"/>#}
+    <link rel="stylesheet" href="{% static '/styles/styles.css' %}"/>
     <title>Car Manager</title>
+    <style>
+        /* Add CSS to ensure the header stays at the top of the page */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #d7d7d7; /* Change the header background color as needed */
+            padding: 10px;
+        }
+
+        /* Add CSS to ensure the footer stays at the bottom of the page */
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #a7b7b0; /* Change the footer background color as needed */
+            padding: 5px;
+        }
+
+        nav {
+            display: flex;
+            gap: 10px;
+            align-items: center; /* Vertically center the links */
+        }
+
+        /* Move navigation links to the right */
+        nav .right-links {
+            float: right;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #111233; /* Change link color as needed */
+            margin-right: 140px;
+            /* Add rounded box-shadow when hovering over links */
+            transition: box-shadow 0.2s, border-radius 0.2s;
+            border-radius: 8px; /* Set the border radius to make it rounded */
+        }
+
+        nav a:hover {
+            /* Adjust the rounded box-shadow according to your preference */
+            box-shadow: 0 10px 4px rgba(20, 10, 50, 0.5);
+            border-radius: 16px; /* Increase the border radius for a more rounded effect */
+        }
+
+        /* Add padding to the body to ensure content is not hidden by header and footer */
+        body {
+            padding-top: 60px; /* Adjust the padding-top value as needed */
+            padding-bottom: 80px; /* Adjust the padding-bottom value as needed */
+        }
+    </style>
 </head>
 
 <body>
 <div id="wrapper">
     <header>
         <nav>
-
-            {% if is_user %}
-                <!-- If there is a user profile -->
-                <div class="user">
-                    <a href="{% url 'home page' %}">Home page</a>
+            <div>
+                <a href="{% url 'home page' %}">Home page</a>
+                <a href="{% url 'contact' %}">Contact</a>
+                <a href="{% url 'about us' %}">About Us</a>
+            </div>
+            <div class="right-links">
+                {% if is_user %}
+                    <!-- If there is a user profile -->
                     <a href="{% url 'profile details' pk=user.pk %}">Profile</a>
                     <a href="{% url 'dashboard' %}">My Cars</a>
-                    <a href="#">Contact</a>
-                    <a href="{% url 'about us' %}">About Us</a>
                     <a href="{% url 'logout' %}">LogOut</a>
-
-
-
-                </div>
-            {% else %}
-
-                <!-- If user profile has NOT been created -->
-                <div class="guest">
-                    <a href="{% url 'home page' %}">Home page</a>
+                {% else %}
+                    <!-- If user profile has NOT been created -->
                     <a href="{% url 'create profile' %}">Create Profile</a>
                     <a href="{% url 'login' %}">LogIn</a>
-                    <a href="#">Contact</a>
-                    <a href="{% url 'about us' %}">About Us</a>
-
-
-                </div>
-            {% endif %}
+                {% endif %}
+            </div>
         </nav>
     </header>
     {% block content %}
@@ -54,7 +95,7 @@
 </div>
 <!-- Your existing HTML content -->
 
-<footer>
+<footer style="background-color: #ffffff;">
     <p>&copy;Nikolay Grozev- CarManager &#8482;</p>
 </footer>
 

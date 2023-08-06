@@ -1,16 +1,21 @@
 {% extends 'base.html' %}
 {% load static %}
 
-
 {% block content %}
-
-        <!-- Home page -->
-        <section id="home">
-            <h1>Welcome to Car-Manager</h1>
-            <img
-                    src="{% static 'images/banner_640x120.jpg' %}"
-                    alt=""
-            />
-            {{ form }}
-        </section>
+    <!-- Home page -->
+    <section id="home" style="background-image: url('{% static 'images/home-page-2.jpg' %}');
+                              background-size: cover;
+                              background-position: center;
+                              height: calc(100vh - 60px); /* Subtract the height of the header to fit content */
+                              display: flex;
+                              flex-direction: column;
+                              justify-content: flex-start; /* Align content to the top */
+                              align-items: center;
+                              text-align: center; /* Center the heading and form */
+    ">
+        <h1 style="margin-top: 20px; text-shadow: 20px 15px 2px rgba(0, 0, 0, 0.3);">
+            Welcome to Car-Manager
+        </h1>
+        {{ form }}
+    </section>
 {% endblock %}

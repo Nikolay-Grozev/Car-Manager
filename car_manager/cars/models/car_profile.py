@@ -1,13 +1,7 @@
-from curses.ascii import isalnum
-import re
-
 from django.contrib.auth import get_user_model
 from django.core import validators
-from django.core.exceptions import ValidationError
-from django.db import models
-from django.utils.deconstruct import deconstructible
 
-from car_manager.accounts.models import CarManagerUser
+from django.db import models
 from car_manager.common.validators import DataValidator, exact_vin_length
 
 UserModel = get_user_model()
@@ -18,18 +12,37 @@ class CarsModel(models.Model):
     MAX_LEN_PLATE_NUMBER_OF_VEHICLE = 8
     MAX_LEN_OF_VIN_NUMBER = 17
 
-    OPEL = 'Opel'
-    CITROEN = 'Citroen'
+    ALFA_ROMEO = 'Alfa Romeo'
+    ASTON_MARTIN = 'Aston Martin'
+    AUDI = 'Audi'
+    BENTLEY = 'Bentley'
     BMW = 'BMW'
+    BUGATTI = 'Bugatti'
+    CITROEN = 'Citroen'
+    DACIA = 'Dacia'
+    FORD = 'Ford'
+    FIAT = 'Fiat'
     MERCEDES = 'Mercedes-Benz'
+    MITSUBISHI = 'Mitsubishi'
+    OPEL = 'Opel'
     PEUGEOT = 'Peugeot'
+    VOLKSWAGEN = 'VolksWagen'
 
     CAR = (
-        (OPEL, OPEL),
-        (CITROEN, CITROEN),
+        (ALFA_ROMEO, ALFA_ROMEO),
+        (ASTON_MARTIN, ASTON_MARTIN),
+        (AUDI, AUDI),
+        (BENTLEY, BENTLEY),
         (BMW, BMW),
+        (CITROEN, CITROEN),
+        (DACIA, DACIA),
+        (FORD, FORD),
+        (FIAT, FIAT),
         (MERCEDES, MERCEDES),
+        (MITSUBISHI, MITSUBISHI),
+        (OPEL, OPEL),
         (PEUGEOT, PEUGEOT),
+        (VOLKSWAGEN, VOLKSWAGEN),
 
     )
 

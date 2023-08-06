@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Car Expiration Reminders</title>
+</head>
+<body>
+<h2>Hello, {{ user_name }}!</h2>
+<p>Here are the expiration reminders for your cars:</p>
+<ul>
+    {% for reminder in reminders %}
+        <li>
+            Car: <strong>{{ reminder.car.car_name }}</strong>
+            Reminder for: {{ reminder.reminder_name }}
+            Expiration Date: {{ reminder.end_date }}
+        </li>
+    {% endfor %}
+</ul>
+<p>Please don't forget to renew your registration before they expire!</p>
+<p>Have a great day!</p>
+</body>
+</html>

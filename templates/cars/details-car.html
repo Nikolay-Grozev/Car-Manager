@@ -1,37 +1,54 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-
     <!-- Profile Details Section -->
-
-    <section id="details">
+    <section id="details" style="display: flex; justify-content: center;">
         <div id="details-wrapper">
             <h2>Car Details</h2>
 
-
-            <p id="details-title">{{ cars.car_name }}</p>
-
+            <p id="details-title" style="font-size: 25px; font-weight: bold; font-family: 'Arial', sans-serif;">
+                {{ cars.car_name }}
+            </p>
 
             <div id="info-wrapper">
-                <div id="details-description">
-                    <p>
-                        {{ cars.plate_number }}
-
-                    </p>
-                    <p>
-                        {{ cars.vin_number }}
-                    </p>
-                    {% csrf_token %}
-
+                <div id="details-description" style="font-style: italic; font-family: 'Arial', sans-serif;">
+                    <p>{{ cars.plate_number }}</p>
+                    <p>{{ cars.vin_number }}</p>
                 </div>
 
                 <!--Edit and Delete buttons -->
                 <div id="action-buttons">
-                    <a href="{% url 'car edit' pk=cars.pk %}" id="edit-btn">Edit</a>
-                    <a href="{% url 'car delete' pk=cars.pk %}" id="delete-btn">Delete</a>
+                    <a href="{% url 'car edit' pk=cars.pk %}" id="edit-btn" class="blue-btn">Edit</a>
+                    <a href="{% url 'car delete' pk=cars.pk %}" id="delete-btn" class="red-btn">Delete</a>
                 </div>
             </div>
         </div>
     </section>
 
+    <style>
+        /* Add rounded box-shadow when hovering over links */
+        a:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            border-radius: 4px;
+        }
+
+        /* Style for the 'Edit' button */
+        .blue-btn {
+            background-color: #3030d5;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+        }
+
+        /* Style for the 'Delete' button */
+        .red-btn {
+            background-color: #d02d2d;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+        }
+    </style>
 {% endblock %}
+

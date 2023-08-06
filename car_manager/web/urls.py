@@ -1,3 +1,4 @@
+from django.conf.urls import handler404
 from django.urls import path
 
 from car_manager.web.views import HomePageView, AboutUsView
