@@ -6,12 +6,12 @@
         <div id="details-wrapper">
             <h2>Car Details</h2>
 
-            <p id="details-title" style="font-size: 25px; font-weight: bold; font-family: 'Arial', sans-serif;">
+            <p id="details-title" style="font-size: 35px; font-weight: bold; font-family: 'Arial', sans-serif;">
                 {{ cars.car_name }}
             </p>
 
             <div id="info-wrapper">
-                <div id="details-description" style="font-style: italic; font-family: 'Arial', sans-serif;">
+                <div id="details-description" style="font-size: 30px; font-family: 'Abyssinica SIL', sans-serif;">
                     <p>{{ cars.plate_number }}</p>
                     <p>{{ cars.vin_number }}</p>
                 </div>
@@ -26,17 +26,26 @@
     </section>
 
     <style>
+        body {
+        background-image: url('{% static 'images/my-cars.jpg' %}');
+        background-size: cover;
+        background-position: center;
+        min-height: 100vh;/* Set a minimum height of the viewport to ensure the image covers the screen */
+        text-align: center;
+        color: white;
+        }
         /* Add rounded box-shadow when hovering over links */
         a:hover {
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
             border-radius: 4px;
+            opacity: 0.8;
         }
 
         /* Style for the 'Edit' button */
         .blue-btn {
             background-color: #3030d5;
             color: white;
-            padding: 10px 20px;
+            padding: 5px 30px;
             border-radius: 4px;
             text-decoration: none;
         }
@@ -45,10 +54,11 @@
         .red-btn {
             background-color: #d02d2d;
             color: white;
-            padding: 10px 20px;
+            padding: 5px 30px;
             border-radius: 4px;
             text-decoration: none;
         }
+
     </style>
 {% endblock %}
 

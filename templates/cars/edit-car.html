@@ -1,18 +1,49 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
 
-        <section id="register">
-            <div class="form">
-                <h2>Edit Plate Number</h2>
-                <form method="post" action="{% url 'car edit' pk=carsmodel.pk%}">
-                    {{ form }}
-                    {% csrf_token %}
+<section id="register" style="margin-top: 50px;"> <!-- Adjust the margin-top value as needed -->
+    <div class="form">
+        <h2 style="font-size: 28px;">Edit Plate Number</h2> <!-- Adjust the font size for the heading -->
+        <form method="post" action="{% url 'car edit' pk=carsmodel.pk %}">
+            {{ form }}
+            {% csrf_token %}
 
-                    <button type="submit">Edit</button>
+            <button type="submit" style="background-color: #007BFF;
+             color: white;
+             padding: 5px 30px;
+             font-size: 15px;
+             font-weight:bold;
+             border: none;
+             border-radius: 4px;
+             cursor: pointer;
+             outline: none;">Edit</button>
+        </form>
+    </div>
+</section>
 
-                </form>
-            </div>
-        </section>
+<style>
+    body {
+        background-image: url('{% static 'images/edit-car-2.jpg' %}');
+        background-size: cover;
+        background-position: center;
+        min-height: 100vh; /* Set a minimum height of the viewport to ensure the image covers the screen */
+        text-align: center;
+    }
+
+    /* Style form fields */
+    form input[type="text"],
+    form input[type="number"],
+    form textarea,
+    form select {
+        background-color: white;
+        font-size: 20px; /* Adjust the font size for the form fields */
+        padding: 10px; /* Adjust the padding for the form fields */
+        margin: 5px; /* Adjust the margin for the form fields */
+        border: 1px solid #ccc; /* Add a border to the form fields */
+        border-radius: 4px;
+    }
+
+</style>
 
 {% endblock %}

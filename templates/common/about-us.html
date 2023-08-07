@@ -1,16 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-    <section id="about-us" style="background-image: url('{% static 'images/about-us.jpg' %}');
-            background-size: cover;
-            background-position: center;
-            /* Add shadow effect */
-            box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.5);
-            /* Add padding and margin to adjust the content position */
-            padding: 20px;
-            margin: 40px;
-            color: white;
-            ">
+
         <h1>
             Car Reminder - Your Ultimate Car Management App
         </h1>
@@ -85,5 +76,15 @@
         <p>
             Get started now and make your car's well-being a top priority!
         </p>
-    </section>
+{#    </section>#}
+    <style>
+        body {
+            background-image: url('{% static 'images/contact-us.jpg' %}');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;/* Set a minimum height of the viewport to ensure the image covers the screen */
+            text-align: center;
+            {#color: white;#}
+        }
+    </style>
 {% endblock %}

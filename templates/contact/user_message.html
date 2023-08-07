@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>email from contact </title>
+  <title>Subject: Car-Manager Contact Form Submission</title>
 </head>
 <body>
-<h2>Hello, admin</h2>
-<p>User {{ name }} user submitted a new question to about: {{ question_categories }} :</p>
-<p>And the message is:</p>
-<p>{{ message }}</p>
-<p> Contact with user via:{{ mode_of_contact }}</p>
-<p>user phone: {{ phone }}</p>
-<p>user email: {{ email }}</p>
-
-<p>Please don't forget to contact with user!</p>
-<p>Have a great day!</p>
+  <p><strong>Dear Admin,</strong></p>
+  <p>You have received a new contact form submission from a user of Car-Manager. Here are the details:</p>
+  <ul>
+    <li><strong>Name:</strong>{{ name }}</li>
+    <li><strong>Email:</strong>{{ email }}</li>
+    <li><strong>Phone:</strong>{{ phone }}</li>
+    <li><strong>Preferred Mode of Contact:</strong>{{ mode_of_contact }}</li>
+    <li><strong>Question Category:</strong>{{ question_categories }}</li>
+  </ul>
+  <p><strong>Message:</strong></p>
+  <p>{{ message }}</p>
+  <p>Please take appropriate action and respond to the user's query promptly.</p>
+  <p>Thank you,</p>
+  <p>Car-Manager</p>
 </body>
 </html>
