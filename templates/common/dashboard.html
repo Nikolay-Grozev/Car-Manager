@@ -1,38 +1,38 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<body>
+    <body>
     <div class="background-image"></div>
     <section id="create" style="margin-left: 20px;">
-    {% if cars %}
-        <!-- Dashboard Page -->
-        <h1 style="margin-top: 20px; text-shadow: 20px 15px 2px rgba(0, 0, 0, 0.3);">
-            Your Cars:
-        </h1>
-        <section id="dashboard" style="display: flex; flex-direction: column;">
-            {% for car in cars %}
-                <div class="cars">
-                    <!-- car name -->
-                    <h3 class="title">{{ car.car_name }}:</h3>
-                    <!-- car plate number -->
-                    <p class="description">{{ car.plate_number }}</p>
-                    <a href="{% url 'car details' pk=car.pk %}">
-                        <button class="large-button details" type="submit">Details</button>
-                    </a>
-                    <br>
-                    <br>
-                    <a href="{% url 'reminders dashboard' pk=car.pk %}">
-                        <button class="large-button reminders" type="submit">Reminders</button>
-                    </a>
-                </div>
-            {% endfor %}
-        </section>
-    {% else %}
-        <h2>No cars in your dashboard.</h2>
-    {% endif %}
+        {% if cars %}
+            <!-- Dashboard Page -->
+            <h1 style="margin-top: 20px; text-shadow: 20px 15px 2px rgba(0, 0, 0, 0.3);">
+                Your Cars:
+            </h1>
+            <section id="dashboard" style="display: flex; flex-direction: column;">
+                {% for car in cars %}
+                    <div class="cars">
+                        <!-- car name -->
+                        <h3 class="title">{{ car.car_name }}:</h3>
+                        <!-- car plate number -->
+                        <p class="description">{{ car.plate_number }}</p>
+                        <a href="{% url 'car details' pk=car.pk %}">
+                            <button class="large-button details" type="submit">Details</button>
+                        </a>
+                        <br>
+                        <br>
+                        <a href="{% url 'reminders dashboard' pk=car.pk %}">
+                            <button class="large-button reminders" type="submit">Reminders</button>
+                        </a>
+                    </div>
+                {% endfor %}
+            </section>
+        {% else %}
+            <h2>No cars in your dashboard.</h2>
+        {% endif %}
     </section>
 
-    <section id="create" style="margin-left: 200px;">
+    <section id="create">
         <div>
             <button class="large-button add-car" type="button" id="add-car-btn">Add New Car</button>
         </div>
@@ -44,49 +44,54 @@
             window.location.href = '{% url 'create car'%}';
         });
     </script>
-</body>
+    </body>
 
 
-<style>
-    /* Add the background image to the body and set it to cover the entire screen */
-    body {
-        background-image: url('{% static 'images/home-page-car.jpg' %}');
-        background-size: cover;
-        background-position: center;
-        min-height: 100vh; /* Set a minimum height of the viewport to ensure the image covers the screen */
-    }
+    <style>
+        /* Add the background image to the body and set it to cover the entire screen */
+        body {
+            background-image: url('{% static 'images/home-page-car.jpg' %}');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh; /* Set a minimum height of the viewport to ensure the image covers the screen */
+        }
 
-    .large-button {
-        padding: 6px 15px; /* Adjust padding to change the button size */
-        font-size: 14px; /* Adjust font size to change the button text size */
-        color: white; /* Set the text color to white */
-        border: none;
-        cursor: pointer;
-        border-radius: 6px;
-        outline: none;
-    }
+        .large-button {
+            padding: 6px 15px; /* Adjust padding to change the button size */
+            font-size: 14px; /* Adjust font size to change the button text size */
+            color: white; /* Set the text color to white */
+            border: none;
+            cursor: pointer;
+            border-radius: 6px;
+            outline: none;
+        }
 
-    /* Blue button for 'Details' */
-    .large-button.details {
-        background-color: #007BFF;
-    }
+        /* Blue button for 'Details' */
+        .large-button.details {
+            background-color: #007BFF;
+        }
 
-    /* Green button for 'Reminders' */
-    .large-button.reminders {
-        background-color: #4CAF50;
-    }
+        /* Green button for 'Reminders' */
+        .large-button.reminders {
+            background-color: #4CAF50;
+        }
 
-    /* Red button for 'Add new car' */
-    .large-button.add-car {
-        background-color: #FF0000;
-    }
+        /* Red button for 'Add new car' */
+        .large-button.add-car {
+            background-color: #FF0000;
+            position: absolute;
+            top: 0;
+            right: 50px;
+            margin-top: 60px;
 
-    /* Customize the colors as needed */
+        }
 
-    .large-button:hover {
-        opacity: 0.8;
-    }
-</style>
+        /* Customize the colors as needed */
+
+        .large-button:hover {
+            opacity: 0.8;
+        }
+    </style>
 {% endblock %}
 
 

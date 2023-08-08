@@ -16,7 +16,7 @@
                     <p class="description">{{ reminder.end_date }}</p>
                 </div>
                 <a href="{% url 'reminder delete' pk=reminder.pk %}">
-                    <button type="submit">Delete</button>
+                    <button type="submit" class="red-btn">Delete</button>
                 </a>
             {% endfor %}
 
@@ -30,7 +30,7 @@
     {% if current < 3 %}
         <section id="create">
             <div class="form">
-                <button type="button" id="add-reminder-btn">Add Reminders</button>
+                <button type="button" id="add-reminder-btn" class="blue-btn">Add Reminders</button>
                 {% csrf_token %}
             </div>
         </section>
@@ -41,7 +41,59 @@
             });
         </script>
     {% else %}
-        <h3>You all ready have every type of reminders for this car</h3>
+        <div class="top-right-text">
+            <h3>You already have every type of reminders for this car!</h3>
+        </div>
+
     {% endif %}
 
+    <style>
+        body {
+            background-image: url('{% static 'images/reminders-2.jpg' %}');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh; /* Set a minimum height of the viewport to ensure the image covers the screen */
+            text-align: left;
+            color: white;
+        }
+
+        /* Add rounded box-shadow when hovering over links */
+        a:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            border-radius: 4px;
+            opacity: 0.8;
+        }
+
+        .top-right-text {
+            position: absolute;
+            top: 0;
+            right: 80px;
+            margin-top: 45px;
+            padding: 40px; /* Optional padding */
+            color: #ffffff;
+        }
+
+        /* Style for the 'Delete' button */
+        .blue-btn {
+            background-color: #3030d5;
+            color: white;
+            padding: 5px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            position: absolute;
+            top: 0;
+            right: 50px;
+            margin-top: 60px;
+        }
+
+        /* Style for the 'Add reminders' button */
+        .red-btn {
+            background-color: #d02d2d;
+            color: white;
+            padding: 5px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+        }
+
+    </style>
 {% endblock %}

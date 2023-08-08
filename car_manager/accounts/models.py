@@ -1,13 +1,10 @@
 import django.contrib.auth.models as auth_model
-from django.core import exceptions
 from django.core.validators import MinLengthValidator, RegexValidator
 from django.db import models
 
 from car_manager.accounts.manager import AppUserManager
 from car_manager.common.validators import validate_only_letters
 
-
-# TODO create function with max MB size image_url
 
 class CarManagerUser(auth_model.AbstractBaseUser, auth_model.PermissionsMixin):
     email = models.EmailField(

@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
     <!-- Login Profile Form -->
-    <section id="login">
+    <section id="login" style="margin-top: 60px">
         <div class="form">
             <h2>LogIn</h2>
             <form method="post" action="{% url 'login' %}">
@@ -14,5 +14,44 @@
 
         </div>
     </section>
+<style>
+    body {
+        background-image: url('{% static 'images/edit-car.jpg' %}');
+        background-size: cover;
+        background-position: center;
+        min-height: 100vh; /* Set a minimum height of the viewport to ensure the image covers the screen */
+        text-align: center;
+        color: black;
+    }
+
+    /* Style form fields */
+    form input[type="login"],
+    form textarea,
+    form select {
+        background-color: white;
+        font-size: 15px; /* Adjust the font size for the form fields */
+        padding: 5px; /* Adjust the padding for the form fields */
+        margin: 5px; /* Adjust the margin for the form fields */
+        border: 1px solid #ccc; /* Add a border to the form fields */
+        border-radius: 4px;
+    }
+
+    /* Style the submit button */
+    form button[type="submit"] {
+        background-color: #00ff33;
+        color: white;
+        padding: 5px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        outline: none;
+    }
+
+    form button[type="submit"]:hover {
+        opacity: 0.8;
+    }
+</style>
 
 {% endblock %}

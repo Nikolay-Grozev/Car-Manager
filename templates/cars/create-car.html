@@ -2,7 +2,7 @@
 {% block content %}
 {% load static %}
 
-<section id="create" style="margin-top: 80px;">
+<section id="create" style="margin-top: 60px;">
     <div class="form">
         <h2 style="font-size: 40px;">Add new Car</h2>
         <form method="post" action="{% url 'create car' %}">
@@ -15,7 +15,7 @@
 
 <style>
     body {
-        background-image: url('{% static 'images/add-car.jpg' %}');
+        background-image: url('{% static 'images/about.jpg' %}');
         background-size: cover;
         background-position: center;
         min-height: 100vh; /* Set a minimum height of the viewport to ensure the image covers the screen */

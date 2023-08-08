@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
-{#TODO change message if email is already exists in DB #}
+{% load static %}
 {% block content %}
     <!-- Create Profile Form -->
-    <section id="register">
+    <section id="register" style="margin-top: 100px;">
         <div class="form">
             <h2>Create Profile</h2>
             <form method="post" action="{% url 'create profile' %}">
@@ -14,5 +14,45 @@
 
         </div>
     </section>
+<style>
+    body {
+        background-image: url('{% static 'images/add-car-2.png' %}');
+        background-size: cover;
+        background-position: center;
+        min-height: 100vh; /* Set a minimum height of the viewport to ensure the image covers the screen */
+        text-align: center;
+        color: black;
+    }
+
+    /* Style form fields */
+    form input[type="email"],
+    form input[type="password"],
+    form textarea,
+    form select {
+        background-color: white;
+        font-size: 15px; /* Adjust the font size for the form fields */
+        padding: 5px; /* Adjust the padding for the form fields */
+        margin: 5px; /* Adjust the margin for the form fields */
+        border: 1px solid #ccc; /* Add a border to the form fields */
+        border-radius: 4px;
+    }
+
+    /* Style the submit button */
+    form button[type="submit"] {
+        background-color: #aa00ff;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        outline: none;
+    }
+
+    form button[type="submit"]:hover {
+        opacity: 0.8;
+    }
+</style>
 
 {% endblock %}
