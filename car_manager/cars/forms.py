@@ -10,6 +10,14 @@ class CarRegistrationForm(forms.ModelForm, BootstrapFormControl):
         self.user = user
         super().apply_class_form_control(self.fields)
 
+    def clean_plate_number(self):
+        plate_number = self.cleaned_data['plate_number']
+        return plate_number.upper()
+
+    def clean_vin_number(self):
+        vin_number = self.cleaned_data['vin_number']
+        return vin_number.upper()
+
     def save(self, commit=True):
         car = super().save(commit=False)
         car.user = self.user
@@ -26,6 +34,14 @@ class EditCarForm(forms.ModelForm, BootstrapFormControl):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         super().apply_class_form_control(self.fields)
+
+    def clean_plate_number(self):
+        plate_number = self.cleaned_data['plate_number']
+        return plate_number.upper()
+
+    def clean_vin_number(self):
+        vin_number = self.cleaned_data['vin_number']
+        return vin_number.upper()
 
     class Meta:
         model = CarsModel
@@ -44,3 +60,17 @@ class DeleteCarForm(forms.ModelForm):
     class Meta:
         model = CarsModel
         fields = ()
+
+
+class CarsAdminForm(forms.ModelForm):
+    class Meta:
+        model = CarsModel
+        fields = '__all__'
+
+    def clean_plate_number(self):
+        plate_number = self.cleaned_data['plate_number']
+        return plate_number.upper()
+
+    def clean_vin_number(self):
+        vin_number = self.cleaned_data['vin_number']
+        return vin_number.upper()

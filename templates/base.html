@@ -17,8 +17,8 @@
             top: 0;
             left: 0;
             width: 100%;
-            background-color: #d7d7d7; /* Change the header background color as needed */
-            padding: 10px;
+            background-color: #a7b7b0; /* Change the header background color as needed */
+            padding: 5px;
         }
 
         /* Add CSS to ensure the footer stays at the bottom of the page */
@@ -27,7 +27,7 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            background-color: #a7b7b0; /* Change the footer background color as needed */
+            {#background-color: #a7b7b0; /* Change the footer background color as needed */#}
             padding: 0;
             text-align: center;
             color: #111233;
@@ -65,6 +65,7 @@
             padding-bottom: 80px; /* Adjust the padding-bottom value as needed */
         }
     </style>
+
 </head>
 
 <body>
@@ -72,20 +73,27 @@
     <header>
         <nav>
             <div>
-                <a href="{% url 'home page' %}">Home page</a>
-                <a href="{% url 'contact' %}">Contact</a>
-                <a href="{% url 'about us' %}">About Us</a>
+
+                <a href="{% url 'home page' %}">| Home</a>
+
+                <a href="{% url 'contact' %}">| Contact</a>
+
+                <a href="{% url 'about us' %}">| About</a>
             </div>
             <div class="right-links">
                 {% if is_user %}
                     <!-- If there is a user profile -->
-                    <a href="{% url 'profile details' pk=user.pk %}">Profile</a>
-                    <a href="{% url 'dashboard' %}">My Cars</a>
-                    <a href="{% url 'logout' %}">LogOut</a>
+                    <a href="{% url 'profile details' pk=user.pk %}">| Profile</a>
+                    <a href="{% url 'dashboard' %}">| My Cars</a>
+                    <a href="{% url 'logout' %}" style="margin-left: 75px">| Sing Out</a>
                 {% else %}
                     <!-- If user profile has NOT been created -->
-                    <a href="{% url 'create profile' %}">Create Profile</a>
-                    <a href="{% url 'login' %}">LogIn</a>
+                  <div style="display: flex; justify-content: flex-end;">
+                    <a href="{% url 'create profile' %}" style="margin-left: 400px">| Sing Up</a>
+                    <a href="{% url 'login' %}" style="margin-right: 30px">| Sing In</a>
+                  </div>
+
+
                 {% endif %}
             </div>
         </nav>
@@ -97,9 +105,10 @@
 </div>
 <!-- Your existing HTML content -->
 
-<footer style="background-color: #ffffff;">
-    <p>&copy;Nikolay Grozev- CarManager &#8482;</p>
+<footer style="background-color: #a7b7b0;">
+    <p style="font-size: 13px;">&copy;Nikolay Grozev - CarManager &#8482;</p>
 </footer>
+
 
 
 </body>

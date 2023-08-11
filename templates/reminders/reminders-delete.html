@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
 
         <section id="edit">
@@ -21,4 +21,31 @@
 
         </section>
 
+<style>
+    body {
+        background-image: url('{% static 'images/delete-reminder-2.jpg' %}');
+        background-size: cover;
+        background-position: center;
+        min-height: 100vh; /* Set a minimum height of the viewport to ensure the image covers the screen */
+        text-align: center;
+        color: #ffffff;
+    }
+
+    /* Style the submit button */
+    form button[type="submit"] {
+        background-color: #ff0000;
+        color: white;
+        padding: 10px 40px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        outline: none;
+    }
+
+    form button[type="submit"]:hover {
+        opacity: 0.8;
+    }
+</style>
 {% endblock %}

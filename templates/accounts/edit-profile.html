@@ -1,20 +1,66 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
 
     <!-- Edit Profile Form -->
 
-    <section id="register">
+    <section id="register" style="margin-top: 60px;">
         <div class="form">
-            <h2>Edit Profile</h2>
+            <h2 style="font-size: 40px;">Edit Profile</h2>
             <form method="post" action="{% url 'edit profile' pk=profile.user.pk %}">
                 {{ form }}
                 {% csrf_token %}
-
-                <button type="submit">Edit</button>
+                <p></p>
+                <button type="submit">SAVE</button>
 
             </form>
         </div>
     </section>
+    <style>
+        body {
+            background-image: url('{% static 'images/about-us-2.jpg' %}');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh; /* Set a minimum height of the viewport to ensure the image covers the screen */
+            text-align: center;
+            color: #131313;
+        }
 
+         /* Style form fields */
+        form input[type="text"],
+        form input[type="image"],
+        form input[type="url"],
+        form input[type='password'],
+        form textarea,
+        form select {
+            background-color: white;
+            font-size: 15px;
+            padding: 5px;
+            margin: 10px auto;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            display: block; /* Display each form field on a new line */
+
+        }
+
+        /* Style the submit button */
+        form button[type="submit"] {
+            background-color: #3030d5;
+            color: white;
+            padding: 5px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            outline: none;
+            margin: 0 auto; /* Center the button horizontally */
+            display: block; /* Ensure block-level element behavior */
+        }
+
+        form button[type="submit"]:hover {
+            opacity: 0.8;
+        }
+
+    </style>
 {% endblock %}

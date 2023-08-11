@@ -32,7 +32,6 @@ class UserRegistrationForm(auth_forms.UserCreationForm, BootstrapFormControl):
             ),
         }
 
-    # TODO check this method
     def save(self, commit=True):
         user = super().save(commit=commit)
         profile = ProfileDetails(
@@ -76,6 +75,7 @@ class DeleteProfileForm(forms.ModelForm):
     class Meta:
         model = ProfileDetails
         fields = ()
+
 
 class ChangePasswordForm(auth_forms.PasswordChangeForm, BootstrapFormControl):
     def __init__(self, *args, **kwargs):

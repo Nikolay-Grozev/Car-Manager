@@ -1,19 +1,143 @@
+{#{% extends 'base.html' %}#}
+{#{% load static %}#}
+{#{% block content %}#}
+{##}
+{#    <div style="margin:80px"></div>#}
+{#        <h1>Contact Us</h1>#}
+{#        <hr>#}
+{#        <h4>Contact us directly if you have any queries. We will get in touch with you shortly.</h4>#}
+{#        <hr>#}
+{#        <br>#}
+{#        <form method="post" action="" enctype="multipart/form-data" class="post-form">#}
+{#            {% csrf_token %}#}
+{#            <table>#}
+{#                {{form}}#}
+{#            </table>#}
+{#            <button type="submit" class="save btn btn-default">Submit</button>#}
+{#        </form>#}
+{#<style>#}
+{#        body {#}
+{#            background-image: url('{% static 'images/contact.jpg' %}');#}
+{#            background-size: cover;#}
+{#            background-position: center;#}
+{#            min-height: 100vh; /* Set a minimum height of the viewport to ensure the image covers the screen */#}
+{#            text-align: center;#}
+{#            color: #131313;#}
+{#        }#}
+{#</style>#}
+{##}
+{#{% endblock %}#}
+
+{#{% extends 'base.html' %}#}
+{#{% load static %}#}
+{#{% block content %}#}
+{##}
+{#    <div style="margin: 80px;"></div>#}
+{#        <h1 style="color: #ffffff;">Contact Us</h1>#}
+{#        <hr>#}
+{#        <h4 style="color: #17bce1;">Contact us directly if you have any queries. We will get in touch with you shortly.</h4>#}
+{#        <hr>#}
+{#        <br>#}
+{#        <form method="post" action="" enctype="multipart/form-data" class="post-form">#}
+{#            {% csrf_token %}#}
+{#            <table>#}
+{#                {{ form }}#}
+{#            </table>#}
+{#            <button type="submit" class="save btn btn-default">Submit</button>#}
+{#        </form>#}
+{#<style>#}
+{#        body {#}
+{#            background-image: url('{% static 'images/contact.jpg' %}');#}
+{#            background-size: cover;#}
+{#            background-position: center;#}
+{#            min-height: 100vh; /* Set a minimum height of the viewport to ensure the image covers the screen */#}
+{#            text-align: center;#}
+{#            color: #131313;#}
+{#        }#}
+{##}
+{#        /* Style for the form fields */#}
+{#        form input[type="text"],#}
+{#        form textarea,#}
+{#        form select {#}
+{#            color: #0000FF; /* Change the color to your preference */#}
+{#            background-color: #ffffff;#}
+{#            font-size: 15px;#}
+{#            padding: 5px;#}
+{#            margin: 5px;#}
+{#            border: 1px solid #ccc;#}
+{#            border-radius: 4px;#}
+{#        }#}
+{##}
+{#        form label {#}
+{#            color: #17bce1; /* Change the color to your preference */#}
+{#            font-size: 15px;#}
+{#        }#}
+{#</style>#}
+{##}
+{#{% endblock %}#}
+
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
 
-    <div style="margin:80px"></div>
-        <h1>Contact Us</h1>
-        <hr>
-        <h4>Contact us directly if you have any queries. We will get in touch with you shortly.</h4>
-        <hr>
-        <br>
-        <form method="post" action="" enctype="multipart/form-data" class="post-form">
-            {% csrf_token %}
-            <table>
-                {{form}}
-            </table>
-            <button type="submit" class="save btn btn-default">Submit</button>
-        </form>
+    <div style="margin: 80px;"></div>
+    <h1 style="color: #17bce1;">Get in Touch</h1>
+    <hr>
+    <h4 style="color: #17bce1;">Reach out to us if you have any questions or inquiries. We'll respond promptly.</h4>
+    <hr>
+    <br>
+    <form method="post" action="" enctype="multipart/form-data" class="post-form">
+        {% csrf_token %}
+        <table>
+            {{ form }}
+        </table>
+        <button type="submit" class="save btn btn-default" style="background-color: #3030d5; color: white;">Send</button>
+    </form>
+<style>
+        body {
+            background-image: url('{% static 'images/contact.jpg' %}');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh; /* Set a minimum height of the viewport to ensure the image covers the screen */
+            text-align: center;
+            color: #ffffff;
+        }
 
+        /* Style for the form fields */
+        form input[type="text"],
+        form input[type='email'],
+        form textarea,
+        form select {
+            color: #0000FF; /* Change the color to your preference */
+            background-color: #ffffff;
+            font-size: 12px;
+            padding: 5px;
+            margin: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        /* Style for the form field labels */
+        form label {
+            color: #17bce1; /* Change the color to your preference */
+            font-size: 15px;
+        }
+
+         form button[type="submit"] {
+            background-color: #3030d5;
+            color: white;
+            padding: 5px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            outline: none;
+        }
+
+        form button[type="submit"]:hover {
+            opacity: 0.8;
+        }
+</style>
 
 {% endblock %}
