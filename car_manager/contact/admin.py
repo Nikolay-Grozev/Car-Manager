@@ -5,7 +5,7 @@ from car_manager.contact.models import Contact
 
 @admin.register(Contact)
 class ContactAdmin(admin.ModelAdmin):
-    list_display =(
+    list_display = (
         'name',
         'email',
         'phone',

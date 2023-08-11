@@ -2,8 +2,6 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseForbidden
 from django.urls import reverse_lazy
 from django.views import generic
-from django.views import generic as views
-from django.contrib.auth import mixins as auth_mixins
 
 from .forms import RemindersRegistrationForm, DeleteReminderForm
 from .models import ReminderModel, CarsModel

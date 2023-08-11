@@ -3,7 +3,6 @@ from django.urls import reverse_lazy
 from django.views import generic as views
 from django.contrib.auth import mixins as auth_mixins
 
-from car_manager.accounts.models import CarManagerUser
 from car_manager.cars.forms import CarRegistrationForm, EditCarForm, DeleteCarForm
 from car_manager.cars.models.car_profile import CarsModel
 
