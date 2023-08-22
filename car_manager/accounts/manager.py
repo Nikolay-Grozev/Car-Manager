@@ -2,7 +2,7 @@ import django.contrib.auth.base_user as auth_base
 from django.contrib.auth.hashers import make_password
 
 
-class   AppUserManager(auth_base.BaseUserManager):
+class AppUserManager(auth_base.BaseUserManager):
     def _create_user(self, email, password, **extra_fields):
         """
         Create and save a user with the given email, and password.

@@ -1,6 +1,6 @@
 from django.contrib.auth import views as auth_views, login, logout
 from django.contrib.auth import mixins as auth_mixins
-from django.http import HttpResponseForbidden, HttpResponseRedirect
+from django.http import HttpResponseForbidden
 from django.urls import reverse_lazy
 
 from django.views import generic as views

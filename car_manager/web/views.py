@@ -1,7 +1,6 @@
 from django.contrib.auth import views
 
 
-
 class HomePageView(views.TemplateView):
     template_name = 'common/home-page.html'
 
